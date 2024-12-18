@@ -1,0 +1,90 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/* Skills Container */
+.skills-section {
+    width: 80%;
+    max-width: 1000px;
+    margin-top: 40px;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin: auto;
+}
+
+h2 {
+    font-size: 36px;
+    color: #2575fc;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.skill-bar {
+    width: 100%;
+    height: 30px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    margin: 15px 0;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.skill-bar .skill-fill {
+    height: 100%;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #2575fc;
+    text-align: left;
+    color: white;
+    padding-left: 10px;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: width 1s ease-in-out;
+}
+
+/* Skill Labels */
+.skill-name {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-align: left;
+    color: #333;
+}
+
+.skills-container {
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .skills-section {
+        width: 90%;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    .skill-bar {
+        height: 25px;
+    }
+
+    .skill-name {
+        font-size: 16px;
+    }
+}

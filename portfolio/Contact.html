@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="C:\Users\Lenovo_Owner\Desktop\Intern project\css\Contact.css" />
+    <title>Contact Form - Portfolio</title>
+    <style>
+        
+        
+    </style>
+</head>
+<body>
+
+    <div class="contact-form">
+        <h2>Contact Details</h2>
+        <form id="contactForm" onsubmit="return submitForm()">
+            <!-- Full Name -->
+            <label for="fullname">Full Name:</label>
+            <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+
+            <!-- Mobile Number -->
+            <label for="mobile">Mobile Number:</label>
+            <input type="tel" id="mobile" name="mobile" placeholder="Enter your mobile number" required>
+
+            <!-- Address -->
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" placeholder="Enter your address" required></textarea>
+
+            <!-- State -->
+            <label for="state">State:</label>
+            <input type="text" id="state" name="state" placeholder="Enter your state" required>
+
+            <!-- Pin Code -->
+            <label for="pincode">Pin Code:</label>
+            <input type="number" id="pincode" name="pincode" placeholder="Enter your pin code" required oninput="getCity()">
+
+            <!-- City (dynamic) -->
+            <label for="city">City:</label>
+            <select id="city" name="city" required>
+                <option value="">Select City</option>
+            </select>
+
+            <!-- Submit & Clear Buttons -->
+            <div class="btn-container">
+                <button type="submit" class="btn">Submit</button>
+                <button type="button" class="btn clear-btn" onclick="clearForm()">Clear</button>
+            </div>
+        </form>
+        
+        <!-- Success Message -->
+        <div id="successMessage" class="success-message">
+            Your details have been successfully submitted!
+        </div>
+    </div>
+
+    <script>
+        // Sample pin code to city mapping
+        const pincodeCityMapping = {
+            110001: "Delhi",
+            400001: "Mumbai",
+            500001: "Hyderabad",
+            700001: "Kolkata",
+            600001: "Chennai",
+        };
+
+        // Function to dynamically update the city dropdown based on pin code
+        function getCity() {
+            const pincode = document.getElementById("pincode").value;
+            const citySelect = document.getElementById("city");
+            
+            // Clear current options
+            citySelect.innerHTML = "<option value=''>Select City</option>";
+            
+            if (pincode in pincodeCityMapping) {
+                const city = pincodeCityMapping[pincode];
+                const option = document.createElement("option");
+                option.value = city;
+                option.textContent = city;
+                citySelect.appendChild(option);
+            }
+        }
+
+        // Function to clear the form
+        function clearForm() {
+            document.getElementById("contactForm").reset();
+            document.getElementById("city").innerHTML = "<option value=''>Select City</option>";
+            document.getElementById("successMessage").style.display = "none"; // Hide success message
+        }
+
+        // Function to handle form submission and show success message
+        function submitForm() {
+            // Prevent default form submission to show success message
+            event.preventDefault();
+
+            // Display success message
+            document.getElementById("successMessage").style.display = "block";
+
+            // Clear form after success
+            setTimeout(clearForm, 3000); // Hide success message and clear the form after 3 seconds
+
+            return false; // Prevent form from actually submitting to keep the page from refreshing
+        }
+    </script>
+
+</body>
+</html>
